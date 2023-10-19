@@ -9,6 +9,8 @@ namespace Ionescu_Serban_Andrei_Lab2.Models
     {
         public int ID { get; set; }
         public string Title { get; set; }
+        /*public int AuthorID { get; set; }
+        public Authors Author { get; set; }*/
         public string Author { get; set; }
         public decimal Price { get; set; }
         public ICollection<Order> Orders { get; set; }
