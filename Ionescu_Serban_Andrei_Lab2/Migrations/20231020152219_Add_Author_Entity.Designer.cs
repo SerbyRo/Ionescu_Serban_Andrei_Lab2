@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ionescu_Serban_Andrei_Lab2.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20231020140548_Add_Author_Entity")]
+    [Migration("20231020152219_Add_Author_Entity")]
     partial class Add_Author_Entity
     {
         /// <inheritdoc />

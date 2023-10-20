@@ -24,13 +24,13 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
         {
             if (_context.Books != null)
             {
-                var booksWithAuthors = await _context.Books.Include(book => book.Author).ToListAsync(); 
+                var booksWithAuthors = await _context.Books.Include(book => book.Author).ToListAsync();
                 return View(booksWithAuthors);
             }
             else
             {
                 return Problem("Entity set 'LibraryContext.Books'  is null.");
-            }          
+            }
         }
 
 
@@ -56,7 +56,7 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "LastName");
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "FullName");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,Author,Price")] Book book)
+        public async Task<IActionResult> Create([Bind("ID,Title,AuthorID,Price")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +74,7 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "LastName", book.AuthorID);
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "FullName", book.AuthorID);
             return View(book);
         }
 
@@ -92,7 +92,7 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
                 return NotFound();
             }
 
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "LastName", book.AuthorID);
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "FullName", book.AuthorID);
             return View(book);
         }
 
@@ -129,7 +129,7 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "LastName", book.AuthorID);
+            ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "FullName", book.AuthorID);
             return View(book);
         }
 
@@ -142,7 +142,7 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
             }
 
             var book = await _context.Books
-                .Include(book=> book.Author)
+                .Include(book => book.Author)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (book == null)
             {
@@ -166,14 +166,14 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
             {
                 _context.Books.Remove(book);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BookExists(int id)
         {
-          return (_context.Books?.Any(e => e.ID == id)).GetValueOrDefault();
+            return (_context.Books?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }
