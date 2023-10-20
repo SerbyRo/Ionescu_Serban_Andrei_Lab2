@@ -3,51 +3,54 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ionescu_Serban_Andrei_Lab2.Data
 {
-    /*public class DbInitializer
+    public class DbInitializer
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new
-            LibraryContext(serviceProvider.GetRequiredService
-            <DbContextOptions<LibraryContext>>()))
+            using (var context = new LibraryContext(serviceProvider.GetRequiredService<DbContextOptions<LibraryContext>>()))
             {
-                if (context.Authors.Any())
+                if (context.Books.Any())
                 {
                     return; // BD a fost creata anterior
                 }
-                context.Authors.AddRange(
-                    new Authors
+                var authors = new Author[]
+                {
+                      new Author
                     {
                         FirstName = "Mihail",
                         LastName = "Sadoveanu"
                     },
-                    new Authors
+                    new Author
                     {
                         FirstName = "George",
                         LastName = "Calinescu"
                     },
-                    new Authors
+                    new Author
                     {
                         FirstName = "Mircea",
                         LastName = "Eliade"
-                    });
+                    }
+                };
+                context.Authors.AddRange(
+                    authors
+                    );
                 context.Books.AddRange(
                 new Book
                 {
                     Title = "Baltagul",
-                    AuthorID = 1,
+                    AuthorID = authors[0].AuthorID,
                     Price = Decimal.Parse("22")
                 },
                 new Book
                 {
                     Title = "Enigma Otiliei",
-                    AuthorID = 2,
+                    AuthorID = authors[1].AuthorID,
                     Price = Decimal.Parse("18")
                 },
                 new Book
                 {
                     Title = "Maytrei",
-                    AuthorID = 3,
+                    AuthorID = authors[2].AuthorID,
                     Price = Decimal.Parse("27")
                 }
                 );
@@ -68,8 +71,8 @@ namespace Ionescu_Serban_Andrei_Lab2.Data
                 context.SaveChanges();
             }
         }
-    }*/
-    public static class DbInitializer
+    }
+    /*public static class DbInitializer
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
@@ -115,5 +118,5 @@ namespace Ionescu_Serban_Andrei_Lab2.Data
                 context.SaveChanges();
             }
         }
-    }
+    }*/
 }
