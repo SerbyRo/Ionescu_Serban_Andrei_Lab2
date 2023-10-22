@@ -101,7 +101,7 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Author,Price")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,AuthorID,Price")] Book book)
         {
             if (id != book.ID)
             {
@@ -128,7 +128,6 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-
             ViewData["AuthorID"] = new SelectList(_context.Authors, "AuthorID", "FullName", book.AuthorID);
             return View(book);
         }
