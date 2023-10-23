@@ -24,13 +24,13 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
         {
             if (_context.Books != null)
             {
-                var booksWithAuthors = await _context.Books.Include(book => book.Author).ToListAsync(); 
+                var booksWithAuthors = await _context.Books.Include(book => book.Author).ToListAsync();
                 return View(booksWithAuthors);
             }
             else
             {
                 return Problem("Entity set 'LibraryContext.Books'  is null.");
-            }          
+            }
         }
 
 
@@ -142,7 +142,7 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
             }
 
             var book = await _context.Books
-                .Include(book=> book.Author)
+                .Include(book => book.Author)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (book == null)
             {
@@ -166,14 +166,14 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
             {
                 _context.Books.Remove(book);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BookExists(int id)
         {
-          return (_context.Books?.Any(e => e.ID == id)).GetValueOrDefault();
+            return (_context.Books?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }
