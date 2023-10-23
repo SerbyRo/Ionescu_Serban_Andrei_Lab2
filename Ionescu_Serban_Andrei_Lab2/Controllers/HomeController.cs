@@ -9,6 +9,12 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly LibraryContext _context;
+        public HomeController(LibraryContext context)
+        {
+            _context = context;
+        }
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
