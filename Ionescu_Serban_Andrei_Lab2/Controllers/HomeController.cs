@@ -1,4 +1,7 @@
-﻿using Ionescu_Serban_Andrei_Lab2.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Ionescu_Serban_Andrei_Lab2.Models;
+using Ionescu_Serban_Andrei_Lab2.Data;
+using Ionescu_Serban_Andrei_Lab2.Models.LibraryViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
