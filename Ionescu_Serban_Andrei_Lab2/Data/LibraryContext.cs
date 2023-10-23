@@ -21,6 +21,8 @@ namespace Ionescu_Serban_Andrei_Lab2.Data
             modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<Author>().ToTable("Author");
             modelBuilder.Entity<Book>().ToTable("Book");
+
+            modelBuilder.Entity<Book>().HasOne(b=>b.Author).WithMany(a=>a.Books).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
