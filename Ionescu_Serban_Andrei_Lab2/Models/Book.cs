@@ -11,7 +11,6 @@ namespace Ionescu_Serban_Andrei_Lab2.Models
         public string Title { get; set; }
         public int? AuthorID { get; set; }
         public Author? Author { get; set; }
-        /*public string Author { get; set; }*/
         public decimal Price { get; set; }
         public ICollection<Order>? Orders { get; set; }
     }
