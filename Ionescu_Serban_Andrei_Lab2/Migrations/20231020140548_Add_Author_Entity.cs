@@ -10,17 +10,17 @@ namespace Ionescu_Serban_Andrei_Lab2.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-          /*  migrationBuilder.DropColumn(
-                name: "Author",
-                table: "Book");
-          */
+            /*  migrationBuilder.DropColumn(
+                  name: "Author",
+                  table: "Book");
+            */
 
-           /* migrationBuilder.AddColumn<int>(
+            migrationBuilder.AddColumn<int>(
                 name: "AuthorID",
                 table: "Book",
                 type: "int",
                 nullable: false,
-                defaultValue: 0);*/
+                defaultValue: 0);
 
             migrationBuilder.CreateTable(
                 name: "Author",

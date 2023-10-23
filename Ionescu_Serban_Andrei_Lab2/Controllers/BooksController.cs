@@ -99,7 +99,7 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
                     _context.Add(book);
                     await _context.SaveChangesAsync();

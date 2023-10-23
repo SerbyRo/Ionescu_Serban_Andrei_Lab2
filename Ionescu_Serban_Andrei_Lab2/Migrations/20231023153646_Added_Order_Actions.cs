@@ -15,13 +15,13 @@ namespace Ionescu_Serban_Andrei_Lab2.Migrations
                 name: "FK_Book_Author_AuthorID",
                 table: "Book");
 
-        /*    migrationBuilder.AddColumn<DateTime>(
+            migrationBuilder.AddColumn<DateTime>(
                 name: "OrderDate",
                 table: "Order",
                 type: "datetime2",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-        */
+
             migrationBuilder.AlterColumn<int>(
                 name: "AuthorID",
                 table: "Book",
@@ -45,10 +45,10 @@ namespace Ionescu_Serban_Andrei_Lab2.Migrations
                 name: "FK_Book_Author_AuthorID",
                 table: "Book");
 
-          /*  migrationBuilder.DropColumn(
+            migrationBuilder.DropColumn(
                 name: "OrderDate",
                 table: "Order");
-          */
+
             migrationBuilder.AlterColumn<int>(
                 name: "AuthorID",
                 table: "Book",
