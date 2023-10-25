@@ -57,7 +57,8 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
                     break;
             }
             int pageSize = 2;
-            return View(await PaginatedList<Book>.CreateAsync(books.Include(book => book.Author).AsNoTracking(), pageNumber ?? 1, pageSize));
+            books = books.Include(book => book.Author).AsNoTracking();
+            return View(await PaginatedList<Book>.CreateAsync(books, pageNumber ?? 1, pageSize));
         }
 
 
@@ -99,7 +100,7 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
                     _context.Add(book);
                     await _context.SaveChangesAsync();

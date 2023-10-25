@@ -18,8 +18,8 @@ namespace Ionescu_Serban_Andrei_Lab2.Data
                     return; // BD a fost creata anterior
                 }
                 //!!Atentie in tabelel Books si Authors au fost introduse date in laboratorul  anterior.Ne vom asigura ca datele pe care dorim sa le introducem in Orders,Publishers si PublishedBook sunt consistente
-                    /*var orders = new Order[]
-                    {
+                var orders = new Order[]
+                {
                     new Order{
                         BookID=2,
                         CustomerID=4,
@@ -29,25 +29,25 @@ namespace Ionescu_Serban_Andrei_Lab2.Data
                     new Order{BookID=3,CustomerID=4,OrderDate=DateTime.Parse("2021-09-28")},
                     new Order{BookID=2,CustomerID=4,OrderDate=DateTime.Parse("2021-09-28")},
                     new Order{BookID=4,CustomerID=4,OrderDate=DateTime.Parse("2021-10-28")},
-                    };
-                    foreach (Order e in orders)
-                    {
-                         context.Orders.Add(e);
-                    }
-                    context.SaveChanges();*/
-                   /*var publishers = new Publisher[]
-                                    {
+                };
+                foreach (Order e in orders)
+                {
+                    context.Orders.Add(e);
+                }
+                context.SaveChanges();
+                var publishers = new Publisher[]
+                                 {
                     new Publisher{PublisherName="Humanitas", Address="Str. Aviatorilor, nr. 40,Bucuresti"},
                     new Publisher{PublisherName="Nemira", Address="Str. Plopilor, nr. 35,Ploiesti"},
                     new Publisher{PublisherName="Paralela 45", Address="Str. Cascadelor, nr. 22, Cluj-Napoca"},
-                                    };*/
-                                    /*foreach (Publisher p in publishers)
-                                    {
-                                        context.Publishers.Add(p);
-                                    }
-                                    context.SaveChanges();*/
-                                    var books = context.Books;
-                var publishers = context.Publishers;
+                                 };
+                foreach (Publisher p in publishers)
+                {
+                    context.Publishers.Add(p);
+                }
+                context.SaveChanges();
+                var books = context.Books;
+                /*var publishers = context.Publishers;*/
                                     var publishedbooks = new PublishedBook[]
                                     {
                     new PublishedBook {

@@ -16,6 +16,6 @@ namespace Ionescu_Serban_Andrei_Lab2.Models
         public decimal Price { get; set; }
         public ICollection<Order>? Orders { get; set; }
 
-        public ICollection<PublishedBook> PublishedBooks { get; set; }
+        public ICollection<PublishedBook>? PublishedBooks { get; set; }
     }
 }
