@@ -75,14 +75,14 @@
             }
             <tr class="@selectedRow">
                 <td>
-                   <!-- @Html.ActionLink("Select","Index", new {bookID = item.ID})-->
-                    <a asp-action="Index" asp-route-id="@item.ID">Select</a>
+                   @Html.ActionLink("Select","Index", new {bookID = item.ID})
+                    <!-- <a asp-action="Index" asp-route-id="@item.ID">Select</a>-->
                 </td>
                 <td>
                     @item.Title
                 </td>
                 <td>
-                    @item.Author
+                    @item.Author.FullName
                 </td>
                 <td>
                     @item.Price
@@ -92,7 +92,7 @@
     </table>
 }
 
-@if (Model.Customers != null)
+@if (Model.Orders != null)
 {
     <h3>Customers Who Ordered the Selected Book</h3>
     <table class="table">
@@ -101,23 +101,22 @@
             <th>Address</th>
             <th>Order Date</th>
         </tr>
-        @foreach (var customer in Model.Customers)
+        @foreach (var item in Model.Orders)
         {
-            <tr>
+            string selectedRow = "";
+            if (item.BookID == (int?)ViewData["BookID"])
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
                 <td>
-                    @customer.Name
+                    @item.Customer.Name
                 </td>
                 <td>
-                    @customer.Adress
+                    @item.Customer.Adress
                 </td>
                 <td>
-                    @{
-                        var order = customer.Orders.FirstOrDefault(o => o.BookID == (int?)ViewData["BookID"]);
-                        if (order != null)
-                        {
-                            @order.OrderDate
-                        }
-                    }
+                    @item.Customer.BirthDate
                 </td>
             </tr>
         }

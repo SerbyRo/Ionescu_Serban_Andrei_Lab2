@@ -29,6 +29,9 @@ namespace Ionescu_Serban_Andrei_Lab2.Controllers
                     .ThenInclude(i=>i.Book)
                         .ThenInclude(i=>i.Orders)
                             .ThenInclude(i=>i.Customer)
+                                .Include(i=>i.PublishedBooks)
+                                    .ThenInclude(i=>i.Book)
+                                        .ThenInclude(i=>i.Author)
                 .AsNoTracking()
                 .OrderBy(i=>i.PublisherName)
                 .ToListAsync();
